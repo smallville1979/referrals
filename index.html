@@ -65,6 +65,53 @@ hr{border:none;border-top:1px solid #1a1a1a;}
   <a href="#banks" style="background:#FFD600;color:#000;font-family:'Bebas Neue',cursive;font-size:clamp(20px,5vw,32px);padding:14px 40px;border-radius:8px;text-decoration:none;box-shadow:0 0 30px rgba(255,214,0,0.3);letter-spacing:1px;">SHOW ME THE MONEY 💸</a>
 </div>
 
+
+<!-- LOOT TABLE -->
+<div style="background:#111;border:3px solid #FFD600;border-radius:16px;padding:30px 20px;max-width:700px;margin:0 auto 40px;text-align:center;">
+  <p style="font-family:'Bebas Neue',cursive;font-size:clamp(14px,3vw,16px);color:rgba(255,214,0,0.6);letter-spacing:4px;margin-bottom:6px;">🎰 TODAYS LOOT TABLE</p>
+  <h2 style="font-family:'Bebas Neue',cursive;font-size:clamp(32px,8vw,60px);color:#FFD600;line-height:1;margin-bottom:6px;" id="loot-title">LOADING...</h2>
+  <p style="font-family:'Bebas Neue',cursive;font-size:clamp(28px,6vw,48px);color:#fff;line-height:1;margin-bottom:12px;" id="loot-amount"></p>
+  <p style="font-size:clamp(14px,3vw,17px);color:rgba(255,255,255,0.7);margin-bottom:20px;line-height:1.5;" id="loot-desc"></p>
+  <a id="loot-btn" href="#" target="_blank" style="background:#FFD600;color:#000;font-family:'Bebas Neue',cursive;font-size:clamp(20px,5vw,32px);padding:14px 40px;border-radius:8px;text-decoration:none;display:inline-block;letter-spacing:1px;box-shadow:0 0 30px rgba(255,214,0,0.4);">CLAIM IT NOW →</a>
+  <p style="font-size:12px;color:rgba(255,255,255,0.3);margin-top:14px;">🎰 refreshes every visit — new loot every time</p>
+</div>
+
+<script>
+(function(){
+  var loot = [
+    {title:"CHASE BANK",amount:"£50 EACH",desc:"Ya both get £50. Pay in £1,000 within 30 days. Get ya code from Chase app → Rewards section.",url:"https://www.chase.co.uk",color:"#00E676"},
+    {title:"LLOYDS SWITCH",amount:"£200 FREE",desc:"Switch to Club Lloyds before 30 April. Move 3 direct debits. Spend £100. £200 in ya account within 45 days.",url:"https://www.lloydsbank.com/current-accounts/switch.html",color:"#FFD600"},
+    {title:"LLOYDS REFER",amount:"£50 EACH",desc:"Already got Lloyds? Refer mates from ya app. Ya both get £50. Up to £250 a year. No switching needed.",url:"https://www.lloydsbank.com/current-accounts/landing/refer-a-friend.html",color:"#FFD600"},
+    {title:"REVOLUT",amount:"UP TO £70",desc:"Refer a friend to Revolut. They sign up, add money, order a card and spend. Ya both earn. Get ya link from the Revolut app.",url:"https://revolut.com",color:"#4FC3F7"},
+    {title:"PAYPAL",amount:"£10 EACH",desc:"Ya both get £10 free. Sign up with the link. Spend £5 within 30 days. Done. Money straight in ya account.",url:"https://py.pl/1erctY",color:"#4FC3F7"},
+    {title:"STARLING BANK",amount:"£25 EACH",desc:"Ya both get £25. Up to 10 referrals = £250. Get ya unique link from the Starling app. Fast and easy.",url:"https://www.starlingbank.com",color:"#4FC3F7"},
+    {title:"TOPCASHBACK",amount:"£25 BONUS",desc:"Get cashback on everything ya buy online. Signup bonus on top. Stacks with Quidco. Use both.",url:"https://www.topcashback.co.uk/ref/q1979",color:"#FF6D00"},
+    {title:"AIRBNB HOST",amount:"£61 CASH",desc:"Know someone with a spare room or property? Refer them as a host. Ya get £61 cash when their first guest checks out.",url:"https://www.airbnb.co.uk/refer",color:"#FF4081"},
+    {title:"BOLT",amount:"£10 OFF",desc:"£8-10 off first rides. Usually 20-30% cheaper than Uber anyway. Download first — best value taxi app in the UK.",url:"https://bolt.eu/en-gb",color:"#00E676"},
+    {title:"UBER",amount:"50% OFF",desc:"50% off ya first 5 rides. Max £5 each. Use the referral link. UK wide. Stack with Bolt and Ola.",url:"https://referrals.uber.com/refer?id=p9kkymrfx11k",color:"#fff"},
+    {title:"GREGGS APP",amount:"FREE COFFEE ☕",desc:"Free hot drink just for downloading the app. Free birthday treat every year. Points on every purchase. Zero cost.",url:"https://www.greggs.co.uk/app",color:"#FF6D00"},
+    {title:"McDONALDS",amount:"FREE FOOD 🍔",desc:"Free medium McFlurry just for downloading MyRewards. Points on every order. Free cheeseburgers regularly.",url:"https://www.mcdonalds.com/gb/en-gb/mymcdonalds-rewards.html",color:"#FF1744"},
+    {title:"KRISPY KREME",amount:"FREE DOUGHNUT 🍩",desc:"Free doughnut just for joining the rewards club. Free birthday doughnut every year. Actual free food. Takes 2 mins.",url:"https://www.krispykreme.co.uk/rewards",color:"#FF1744"},
+    {title:"AIRTIME REWARDS",amount:"FREE 📱",desc:"Links to ya debit card. Automatically knocks money off ya phone bill when ya shop at Boots, Greggs, Argos. Zero effort.",url:"https://www.airtimerewards.co.uk",color:"#4FC3F7"},
+    {title:"MONZO",amount:"UP TO £150",desc:"Up to £15 per referral from the Monzo app. Refer 10 mates = £150. Get ya link from Monzo app → Account → Refer a friend.",url:"https://monzo.com",color:"#CE93D8"},
+    {title:"VANQUIS CARD",amount:"£25 SIGNUP",desc:"£25 bonus just for getting the card and spending £1. Good for building credit score too. Bonus credited within days.",url:"https://www.vanquis.co.uk",color:"#FF1744"},
+    {title:"MEGABUS",amount:"FROM £1 🚌",desc:"Coaches from £1. London to Edinburgh from £5. Cheaper than any train. Book early for best prices.",url:"https://uk.megabus.com",color:"#FFD600"},
+    {title:"OLIO",amount:"FREE FOOD 🥫",desc:"Free food from neighbours. Supermarket surplus every night. Zero cost. Zero forms. Just download and find food near ya.",url:"https://olioapp.com",color:"#00E676"}
+  ];
+
+  var pick = loot[Math.floor(Math.random()*loot.length)];
+  document.getElementById('loot-title').textContent = pick.title;
+  document.getElementById('loot-title').style.color = pick.color;
+  document.getElementById('loot-amount').textContent = pick.amount;
+  document.getElementById('loot-desc').textContent = pick.desc;
+  var btn = document.getElementById('loot-btn');
+  btn.href = pick.url;
+  btn.style.background = pick.color;
+  btn.style.color = (pick.color === '#FFD600' || pick.color === '#00E676' || pick.color === '#fff' || pick.color === '#4FC3F7') ? '#000' : '#fff';
+  document.getElementById('loot-btn').style.boxShadow = '0 0 30px ' + pick.color + '66';
+})();
+</script>
+
 <div class="ticker"><div class="ticker-inner">
   <span class="tick-item">💷 LLOYDS £200 &nbsp;</span>
   <span class="tick-item">💙 REVOLUT £70 &nbsp;</span>
@@ -127,6 +174,35 @@ hr{border:none;border-top:1px solid #1a1a1a;}
       <h3>Barclays Switch</h3>
       <p>Switch to Barclays current account. £175 cash bonus.</p>
       <span class="tag" style="background:rgba(79,195,247,0.15);color:#4FC3F7;">SWITCHING BONUS</span>
+    </a>
+
+    <a href="https://www.chase.co.uk" target="_blank" class="ref-card" style="background:#001a1a;">
+      <div class="amount" style="color:#00E676;">£50</div>
+      <h3>Chase UK — £50 Each</h3>
+      <p>Ya both get £50. Pay in £1,000 within 30 days. Get ya code from Chase app → Rewards section. Up to 5 referrals.</p>
+      <span class="tag" style="background:rgba(0,230,118,0.15);color:#00E676;">£50 EACH</span>
+      <p class="note">⚠️ Need ya own code from the Chase app</p>
+    </a>
+
+    <a href="https://monzo.com" target="_blank" class="ref-card" style="background:#1a001a;">
+      <div class="amount" style="color:#CE93D8;">£15</div>
+      <h3>Monzo Referral</h3>
+      <p>Ya both get up to £15 when a friend joins via ya link. Up to 10 referrals = £150. Get ya link in the Monzo app.</p>
+      <span class="tag" style="background:rgba(206,147,216,0.15);color:#CE93D8;">UP TO £150 TOTAL</span>
+    </a>
+
+    <a href="https://www.starlingbank.com" target="_blank" class="ref-card" style="background:#001020;">
+      <div class="amount" style="color:#4FC3F7;">£25</div>
+      <h3>Starling Bank — £25 Each</h3>
+      <p>Ya both get £25. Up to 10 referrals = £250. Get ya unique link from the Starling app.</p>
+      <span class="tag" style="background:rgba(79,195,247,0.15);color:#4FC3F7;">£25 EACH</span>
+    </a>
+
+    <a href="https://www.vanquis.co.uk" target="_blank" class="ref-card" style="background:#1a0000;">
+      <div class="amount" style="color:#FF1744;">£25</div>
+      <h3>Vanquis Credit Card</h3>
+      <p>£25 signup bonus. Spend £1 on the card. Bonus credited within days. Good for building credit score too.</p>
+      <span class="tag" style="background:rgba(255,23,68,0.15);color:#FF1744;">CREDIT BUILDER + £25</span>
     </a>
 
   </div>
@@ -274,6 +350,60 @@ hr{border:none;border-top:1px solid #1a1a1a;}
       <h3>Leger European Tours</h3>
       <p>Coach tours to Paris, Amsterdam, Swiss Alps. All inclusive. Coach picks ya up. Cheaper than DIY.</p>
       <span class="tag" style="background:rgba(79,195,247,0.15);color:#4FC3F7;">EUROPE BY COACH</span>
+    </a>
+
+  </div>
+</div>
+
+
+<hr>
+
+<!-- FREE STUFF / LOYALTY -->
+<div class="section" id="freebies">
+  <p class="section-title" style="color:#FF6D00;">☕ FREE STUFF — SIGN UP AND EAT</p>
+  <p class="section-sub">greggs free coffee. mcdonalds free food. airtime rewards kills ya phone bill. all free to join.</p>
+  <div class="grid">
+
+    <a href="https://www.greggs.co.uk/app" target="_blank" class="ref-card" style="background:#1a0800;">
+      <div class="amount" style="color:#FF6D00;">FREE ☕</div>
+      <h3>Greggs App</h3>
+      <p>Free hot drink on signup. Free birthday treat every year. Collect points on every purchase. Completely free app.</p>
+      <span class="tag" style="background:rgba(255,109,0,0.15);color:#FF6D00;">FREE COFFEE ON SIGNUP</span>
+    </a>
+
+    <a href="https://www.mcdonalds.com/gb/en-gb/mymcdonalds-rewards.html" target="_blank" class="ref-card" style="background:#1a0000;">
+      <div class="amount" style="color:#FF1744;">FREE 🍔</div>
+      <h3>McDonald's MyRewards</h3>
+      <p>Points on every order. Redeem for free food. Free medium McFlurry just for downloading. Free fries regularly.</p>
+      <span class="tag" style="background:rgba(255,23,68,0.15);color:#FF1744;">FREE FOOD EVERY WEEK</span>
+    </a>
+
+    <a href="https://www.airtimerewards.co.uk" target="_blank" class="ref-card" style="background:#001020;">
+      <div class="amount" style="color:#4FC3F7;">FREE 📱</div>
+      <h3>Airtime Rewards</h3>
+      <p>Links to ya debit card. Automatically knocks money off ya phone bill when ya shop at Boots, Greggs, Argos and more. Zero effort.</p>
+      <span class="tag" style="background:rgba(79,195,247,0.15);color:#4FC3F7;">KILLS YA PHONE BILL</span>
+    </a>
+
+    <a href="https://www.krispykreme.co.uk/rewards" target="_blank" class="ref-card" style="background:#1a0000;">
+      <div class="amount" style="color:#FF1744;">FREE 🍩</div>
+      <h3>Krispy Kreme</h3>
+      <p>Free doughnut just for joining the rewards club. Free birthday doughnut every year. Collect points. Actual free food.</p>
+      <span class="tag" style="background:rgba(255,23,68,0.15);color:#FF1744;">FREE DOUGHNUT SIGNUP</span>
+    </a>
+
+    <a href="https://www.starbucks.co.uk/rewards" target="_blank" class="ref-card" style="background:#001a08;">
+      <div class="amount" style="color:#00E676;">FREE ☕</div>
+      <h3>Starbucks Rewards</h3>
+      <p>Earn stars on every purchase. Free drink on birthday. Bonus star days mean faster free drinks.</p>
+      <span class="tag" style="background:rgba(0,230,118,0.15);color:#00E676;">FREE BIRTHDAY DRINK</span>
+    </a>
+
+    <a href="https://www.quidco.com" target="_blank" class="ref-card" style="background:#1a1500;">
+      <div class="amount" style="color:#FFD600;">£20</div>
+      <h3>Quidco Cashback</h3>
+      <p>Get cashback on everything ya buy online. Referral bonus £20+. Works alongside TopCashback — use both.</p>
+      <span class="tag" style="background:rgba(255,214,0,0.15);color:#FFD600;">CASHBACK ON EVERYTHING</span>
     </a>
 
   </div>
